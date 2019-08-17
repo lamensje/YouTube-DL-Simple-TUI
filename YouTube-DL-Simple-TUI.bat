@@ -200,6 +200,11 @@ cls
 set quality=-f "bestvideo[height<=?2160]+bestaudio" %arguments%
 goto Command
 
+:MP3
+cls
+set quality=--extract-audio -f 140, --audio-format mp3 %thumbnail%
+goto command
+
 :Maximum
 cls
 set quality=-f "bestvideo+bestaudio" %arguments%
