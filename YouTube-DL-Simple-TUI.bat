@@ -167,7 +167,7 @@ goto Execute
 
 :Music
 cls
-set quality=--extract-audio -f bestaudio
+set quality=--extract-audio -f bestaudio %thumbnail%
 goto Command
 
 :360p
