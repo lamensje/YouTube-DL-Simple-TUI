@@ -69,6 +69,7 @@ echo [1] Manual save path
 echo [2] Default save path
 echo [3] Clear Archive
 echo [4] Toggle Thumbnail
+echo [5] Download 128kbps .mp3 audio playlist
 echo.
 set /p input= Choice: 
 
@@ -77,6 +78,7 @@ if %input%==1 goto ManualSavePath
 if %input%==2 goto DefaultSavePath
 if %input%==3 goto ClearArchivePrompt
 if %input%==4 goto Thumbnail
+if %input%==5 goto MP3
 
 echo Invalid selection!
 echo.
