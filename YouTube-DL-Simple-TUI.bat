@@ -169,12 +169,12 @@ goto Execute
 
 :MP3
 cls
-set quality=--extract-audio -f 140, --audio-format mp3 --embed-thumbnail 
+set quality=--extract-audio -f 140, --audio-format mp3 --embed-thumbnail --add-metadata
 goto command
 
 :Music
 cls
-set quality=--extract-audio -f bestaudio --embed-thumbnail 
+set quality=--extract-audio -f bestaudio --embed-thumbnail --add-metadata
 goto Command
 
 :360p
