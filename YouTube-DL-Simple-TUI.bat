@@ -167,9 +167,14 @@ echo You have selected a maximum quality of %quality%p.
 set command=youtube-dl --download-archive archive.log -i  %quality% %path%
 goto Execute
 
+:MP3
+cls
+set quality=--extract-audio -f 140, --audio-format mp3 --embed-thumbnail 
+goto command
+
 :Music
 cls
-set quality=--extract-audio -f bestaudio %thumbnail%
+set quality=--extract-audio -f bestaudio --embed-thumbnail 
 goto Command
 
 :360p
@@ -201,11 +206,6 @@ goto Command
 cls
 set quality=-f "bestvideo[height<=?2160]+bestaudio" %arguments%
 goto Command
-
-:MP3
-cls
-set quality=--extract-audio -f 140, --audio-format mp3 %thumbnail%
-goto command
 
 :Maximum
 cls
