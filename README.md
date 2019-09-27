@@ -5,6 +5,8 @@ YouTube-DL-Simple-TUI makes downloading YouTube videos even easier with this sim
 Presets for downloading (all with highest audio quality):
 Music Only, 360p, 480p, 720p, 1080p, 1440p, 2160p and maximum quality.
 
+Downloads single videos, playlists or entire YouTube channels.
+
 Options:
 Manual save path.
 Default save path.
