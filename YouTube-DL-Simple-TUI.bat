@@ -1,44 +1,55 @@
 @echo off
 set path=-o "..\YouTube\%%(playlist)s\%%(title)s.%%(ext)s"
-set thumbnail=--write-thumbnail
-set arguments=--retries 5 --embed-subs --write-sub --sub-lang en --ignore-errors --no-continue --no-overwrites --no-post-overwrites %thumbnail% --add-metadata
+set metadata=--add-metadata
+set arguments=--retries 5 --embed-subs --write-sub --sub-lang en --ignore-errors --no-continue --no-overwrites --no-post-overwrites %thumbnail% %metadata% 
 
 :Restart
 cls
 goto Start
 
 :Start
+cls
 title YouTube-DL Preset Downloader
 echo Default save path is on the same drive, in the folder "YouTube" 
 echo next to the folder where this executable is located in.
 echo ----------------------------------------------------------------
-echo Please select the highest desirable quality from the list
+echo Select the desirable option from the list
 echo with the corresponding number.
 echo ----------------------------------------------------------------
 
 echo [0] exit
-echo [1] Direct Audio Download
-echo [2] 360p
-echo [3] 480p
-echo [4] 720p
-echo [5] 1080p
-echo [6] 1440p
-echo [7] 2160p
-echo [8] Maximum
-echo [9] Menu
+echo [1] 360p
+echo [2] 480p
+echo [3] 720p
+echo [4] 1080p
+echo [5] 1440p
+echo [6] 2160p
+echo [7] Maximum
+echo [8] Direct Opus Audio Download
+echo [9] Download highest quality .mp3 Audio
+echo [10] Download 128kbps .mp3 Audio
+echo [11] Manual save path
+echo [12] Default save path
+echo [13] Clear Archive
+echo [14] Toggle Thumbnail
 echo.
 set /p input= Choice: 
 
 if %input%==0 exit
-if %input%==1 goto Music
-if %input%==2 goto 360p
-if %input%==3 goto 480p
-if %input%==4 goto 720p
-if %input%==5 goto 1080p
-if %input%==6 goto 1440p
-if %input%==7 goto 2160p
-if %input%==8 goto Maximum
-if %input%==9 goto Menu
+if %input%==1 goto 360p
+if %input%==2 goto 480p
+if %input%==3 goto 720p
+if %input%==4 goto 1080p
+if %input%==5 goto 1440p
+if %input%==6 goto 2160p
+if %input%==7 goto Maximum
+if %input%==8 goto Music
+if %input%==9 goto MP3
+if %input%==10 goto MP3128
+if %input%==11 goto ManualSavePath
+if %input%==12 goto DefaultSavePath
+if %input%==13 goto ClearArchivePrompt
+if %input%==14 goto Thumbnail
 
 echo Invalid selection!
 echo.
@@ -61,33 +72,6 @@ echo Press any key to go back.
 pause >nul
 goto Restart
 
-:Menu
-cls
-echo ----------------------------------------------------------
-echo [0] Back
-echo [1] Manual save path
-echo [2] Default save path
-echo [3] Clear Archive
-echo [4] Toggle Thumbnail
-echo [5] Download 128kbps .mp3 Audio
-echo [6] Download highest quality .mp3 Audio
-echo.
-set /p input= Choice: 
-
-if %input%==0 goto Restart
-if %input%==1 goto ManualSavePath
-if %input%==2 goto DefaultSavePath
-if %input%==3 goto ClearArchivePrompt
-if %input%==4 goto Thumbnail
-if %input%==5 goto MP3
-if %input%==6 goto MP3128
-
-echo Invalid selection!
-echo.
-echo Try again.
-pause >nul
-goto Menu
-
 :ManualSavePath
 cls
 echo Each video will be stored in a seperate folder named after the playlist.
@@ -97,7 +81,7 @@ echo Manual save path set!
 echo.
 echo Press any key to go back.
 pause >nul
-goto Menu
+goto Start
 
 :DefaultSavePath
 echo.
@@ -106,14 +90,14 @@ echo Default save path set!
 echo.
 echo Press any key to go back.
 pause >nul
-goto Menu
+goto Start
 
 :ClearArchivePrompt
 cls
 echo This will result in longer checking if a video has already been downloaded!
 set /p input= Are you sure? [Y/N]: 
 if %input%==Y goto ClearArchive
-if %input%==N goto Menu
+if %input%==N goto Start
 echo Invalid selection!
 echo.
 echo Try again.
@@ -147,12 +131,12 @@ goto Thumbnail
 
 :EnableThumbnail
 echo.
-set thumbnail=--write-thumbnail
+set thumbnail=--write-thumbnail --xattrs --embed-thumbnail
 echo Thumbnails enabled!
 echo.
 echo Press any key to go back.
 pause >nul
-goto Menu
+goto Start
 
 :DisableThumbnail
 echo.
@@ -161,7 +145,41 @@ echo Thumbnails disabled!
 echo.
 echo Press any key to go back.
 pause >nul
-goto Menu
+goto Start
+
+:Metadata
+cls
+echo [1] Enable Metadata
+echo [2] Disable Metadata
+echo.
+set /p input= Choice: 
+
+if %input%==1 goto EnableMetadata
+if %input%==2 goto DisableMetadata
+
+echo Invalid selection!
+echo.
+echo Try again.
+pause >nul
+goto Thumbnail
+
+:EnableMetadatal
+echo.
+set metadata=--add-metadata
+echo Metadata enabled!
+echo.
+echo Press any key to go back.
+pause >nul
+goto Start
+
+:DisableMetadata
+echo.
+set "metadata="
+echo Metadata disabled!
+echo.
+echo Press any key to go back.
+pause >nul
+goto Start
 
 :Command
 cls
