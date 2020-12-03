@@ -1,7 +1,7 @@
 @echo off
 set path=-o "..\YouTube\%%(playlist)s\%%(title)s.%%(ext)s"
 set thumbnail=--write-thumbnail
-set arguments=--embed-subs --write-sub --sub-lang en --ignore-errors --no-continue --no-overwrites --no-post-overwrites %thumbnail% --add-metadata
+set arguments=--retries 5 --embed-subs --write-sub --sub-lang en --ignore-errors --no-continue --no-overwrites --no-post-overwrites %thumbnail% --add-metadata
 
 :Restart
 cls
@@ -69,7 +69,6 @@ echo [1] Manual save path
 echo [2] Default save path
 echo [3] Clear Archive
 echo [4] Toggle Thumbnail
-echo [5] Download 128kbps .mp3 audio playlist
 echo.
 set /p input= Choice: 
 
@@ -78,7 +77,6 @@ if %input%==1 goto ManualSavePath
 if %input%==2 goto DefaultSavePath
 if %input%==3 goto ClearArchivePrompt
 if %input%==4 goto Thumbnail
-if %input%==5 goto MP3
 
 echo Invalid selection!
 echo.
@@ -167,14 +165,9 @@ echo You have selected a maximum quality of %quality%p.
 set command=youtube-dl --download-archive archive.log -i  %quality% %path%
 goto Execute
 
-:MP3
-cls
-set quality=--extract-audio -f 140, --audio-format mp3 --embed-thumbnail --add-metadata
-goto command
-
 :Music
 cls
-set quality=--extract-audio -f bestaudio --embed-thumbnail --add-metadata
+set quality=--extract-audio -f bestaudio
 goto Command
 
 :360p
