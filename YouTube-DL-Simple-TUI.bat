@@ -17,7 +17,7 @@ echo with the corresponding number.
 echo ----------------------------------------------------------------
 
 echo [0] exit
-echo [1] Music only
+echo [1] Direct Audio Download
 echo [2] 360p
 echo [3] 480p
 echo [4] 720p
@@ -48,7 +48,7 @@ goto Restart
 
 :Execute
 cls
-set /p url= Enter YouTube playlist URL: 
+set /p url= Enter YouTube video/playlist/channel URL: 
 %command% %url%
 
 set "input="
@@ -69,6 +69,8 @@ echo [1] Manual save path
 echo [2] Default save path
 echo [3] Clear Archive
 echo [4] Toggle Thumbnail
+echo [5] Download 128kbps .mp3 Audio
+echo [6] Download highest quality .mp3 Audio
 echo.
 set /p input= Choice: 
 
@@ -77,6 +79,8 @@ if %input%==1 goto ManualSavePath
 if %input%==2 goto DefaultSavePath
 if %input%==3 goto ClearArchivePrompt
 if %input%==4 goto Thumbnail
+if %input%==5 goto MP3
+if %input%==6 goto MP3128
 
 echo Invalid selection!
 echo.
@@ -164,6 +168,16 @@ cls
 echo You have selected a maximum quality of %quality%p.
 set command=youtube-dl --download-archive archive.log -i  %quality% %path%
 goto Execute
+
+:MP3128
+cls
+set quality=--extract-audio -f 140, --audio-format mp3 %thumbnail%
+goto command
+
+:MP3
+cls
+set quality=--extract-audio -f bestaudio, --audio-format mp3 %thumbnail%
+goto command
 
 :Music
 cls
