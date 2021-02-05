@@ -1,7 +1,7 @@
 @echo off
 set path=-o "..\YouTube\%%(playlist)s\%%(title)s.%%(ext)s"
 set metadata=--add-metadata
-set arguments=--retries 5 --continue --socket-timeout 10 --embed-subs --write-sub --sub-lang en --ignore-errors --no-continue --no-overwrites --no-post-overwrites %thumbnail% %metadata% 
+set arguments=--retries 5 --continue --socket-timeout 10 --embed-subs --write-sub --all-subs --ignore-errors --no-continue --no-overwrites --no-post-overwrites %thumbnail% %metadata% 
 
 :Restart
 cls
