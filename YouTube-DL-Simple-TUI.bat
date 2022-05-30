@@ -36,12 +36,12 @@ echo.
 set /p input= Choice: 
 
 if %input%==0 exit
-if %input%==1 goto 360p
-if %input%==2 goto 480p
-if %input%==3 goto 720p
-if %input%==4 goto 1080p
-if %input%==5 goto 1440p
-if %input%==6 goto 2160p
+if %input%==1 goto 360
+if %input%==2 goto 480
+if %input%==3 goto 720
+if %input%==4 goto 1080
+if %input%==5 goto 1440
+if %input%==6 goto 2160
 if %input%==7 goto Maximum
 if %input%==8 goto Music
 if %input%==9 goto MP3
@@ -202,32 +202,32 @@ cls
 set quality=--extract-audio -f bestaudio
 goto Command
 
-:360p
+:360
 cls
 set quality=-f "bestvideo[height<=?360]+bestaudio" %arguments%
 goto Command
 
-:480p
+:480
 cls
 set quality=-f "bestvideo[height<=?480]+bestaudio" %arguments%
 goto Command
 
-:720p
+:720
 cls
 set quality=-f "bestvideo[height<=?720]+bestaudio" %arguments%
 goto Command
 
-:1080p
+:1080
 cls
 set quality=-f "bestvideo[height<=?1080]+bestaudio" %arguments%
 goto Command
 
-:1440p
+:1440
 cls
 set quality=-f "bestvideo[height<=?1440]+bestaudio" %arguments%
 goto Command
 
-:2160p
+:2160
 cls
 set quality=-f "bestvideo[height<=?2160]+bestaudio" %arguments%
 goto Command
