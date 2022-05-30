@@ -184,7 +184,7 @@ goto Start
 :Command
 cls
 echo You have selected a maximum quality of %quality%p.
-set command=youtube-dl --download-archive archive.log -i  %quality% %path%
+set command=yt-dlp --download-archive archive.log -i  %quality% %path%
 goto Execute
 
 :MP3128
