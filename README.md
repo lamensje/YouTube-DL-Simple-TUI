@@ -1,5 +1,5 @@
 # YouTube-DL-Simple-TUI
-Original YouTube-DL (command-line only): https://github.com/ytdl-org/youtube-dl
+Uses YT-DLP: https://github.com/yt-dlp/yt-dlp
 
 YouTube-DL-Simple-TUI makes downloading YouTube videos even easier with this simple TUI design.
 Presets for downloading:
