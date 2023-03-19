@@ -1,7 +1,5 @@
 @echo off
 
-curl https://raw.githubusercontent.com/lamensje/YouTube-DL-Simple-TUI/master/YouTube-DL-Simple-TUI.bat > YouTube-DL-Simple-TUI.bat
-
 >nul 2>&1 "%SYSTEMROOT%\system32\cacls.exe" "%SYSTEMROOT%\system32\config\system"
 
 if '%errorlevel%' NEQ '0' (
