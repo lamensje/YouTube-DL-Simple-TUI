@@ -21,6 +21,6 @@ if '%errorlevel%' NEQ '0' (
     CD /D "%~dp0"
 
 echo Updating YouTube-DL..
-yt-dlp.exe -U
+yt-dlp.exe --update-to nightly
 
 YouTube-DL-Simple-TUI.bat
