@@ -1,6 +1,6 @@
 @echo off
 set path=-o "..\YouTube\%%(playlist)s\%%(title)s.%%(ext)s"
-set metadata=--add-metadata
+set metadata=--parse-metadata "playlist_title:(?s)(?P<meta_album_artist>.+)" --parse-metadata "title:(?s)(?P<meta_title>.+)" --parse-metadata "uploader:(?s)(?P<meta_artist>.+)" --parse-metadata ":(?P<meta_synopsis>)" --add-metadata
 set arguments=--retries 5 --continue --socket-timeout 10 --embed-subs --write-sub --all-subs --ignore-errors --no-continue --no-overwrites --no-post-overwrites %thumbnail% %metadata% 
 set thumbnail= --xattrs --embed-thumbnail
 
@@ -168,7 +168,7 @@ goto Thumbnail
 
 :EnableMetadatal
 echo.
-set metadata=--add-metadata
+set metadata=--parse-metadata "playlist_title:(?s)(?P<meta_album_artist>.+)" --parse-metadata "title:(?s)(?P<meta_title>.+)" --parse-metadata "uploader:(?s)(?P<meta_artist>.+)" --parse-metadata ":(?P<meta_synopsis>)" --add-metadata
 echo Metadata enabled!
 echo.
 echo Press any key to go back.
@@ -197,12 +197,12 @@ goto command
 
 :MP3
 cls
-set quality=--extract-audio -f bestaudio, --audio-format mp3 %thumbnail%
+set quality=--extract-audio -f bestaudio, --audio-format mp3 %thumbnail% %metadata%
 goto command
 
 :Music
 cls
-set quality=--extract-audio -f bestaudio %thumbnail%
+set quality=--extract-audio -f bestaudio %thumbnail% %metadata%
 goto Command
 
 :360
