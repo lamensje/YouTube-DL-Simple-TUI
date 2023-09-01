@@ -20,8 +20,8 @@ Example:
 If you executable is located in "D:\Youtube-DL\YouTube-DL-Simple-TUI.bat",
 the default save folder would be "D:\YouTube\\*PlaylistName*\\*VideoTitle*.
 
-Metadata is as following:--
-Youtube video title = Title--
-Youtube album (if any) = Album--
-Youtube playlist name = Album Artist--
+Metadata is as following:  
+Youtube video title = Title  
+Youtube album (if any) = Album  
+Youtube playlist name = Album Artist  
 Youtube uploader = Artist
