@@ -2,6 +2,7 @@
 set path=-o "..\YouTube\%%(playlist)s\%%(title)s.%%(ext)s"
 set metadata=--add-metadata
 set arguments=--retries 5 --continue --socket-timeout 10 --embed-subs --write-sub --all-subs --ignore-errors --no-continue --no-overwrites --no-post-overwrites %thumbnail% %metadata% 
+set thumbnail= --xattrs --embed-thumbnail
 
 :Restart
 cls
@@ -32,6 +33,7 @@ echo [11] Manual save path
 echo [12] Default save path
 echo [13] Clear Archive
 echo [14] Toggle Thumbnail
+echo [15] Update to latest yt-dlp binary
 echo.
 set /p input= Choice: 
 
@@ -50,6 +52,7 @@ if %input%==11 goto ManualSavePath
 if %input%==12 goto DefaultSavePath
 if %input%==13 goto ClearArchivePrompt
 if %input%==14 goto Thumbnail
+if %input%==15 goto Update
 
 echo Invalid selection!
 echo.
@@ -131,7 +134,7 @@ goto Thumbnail
 
 :EnableThumbnail
 echo.
-set thumbnail=--write-thumbnail --xattrs --embed-thumbnail
+set thumbnail= --xattrs --embed-thumbnail
 echo Thumbnails enabled!
 echo.
 echo Press any key to go back.
@@ -199,7 +202,7 @@ goto command
 
 :Music
 cls
-set quality=--extract-audio -f bestaudio
+set quality=--extract-audio -f bestaudio, %thumbnail%
 goto Command
 
 :360
@@ -236,3 +239,12 @@ goto Command
 cls
 set quality=-f "bestvideo+bestaudio" %arguments%
 goto Command
+
+:Update
+echo Updating YouTube-DL..
+yt-dlp.exe --update-to nightly
+
+echo.
+echo Press any key to go back.
+pause >nul
+goto Start
