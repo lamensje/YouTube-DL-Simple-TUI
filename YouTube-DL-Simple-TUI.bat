@@ -202,7 +202,7 @@ goto command
 
 :Music
 cls
-set quality=--extract-audio -f bestaudio, %thumbnail%
+set quality=--extract-audio -f bestaudio %thumbnail%
 goto Command
 
 :360
