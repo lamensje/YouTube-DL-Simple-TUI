@@ -17,7 +17,7 @@ Toggle Thumbnail saving.
 
 Default save path is on the same drive, in the folder "YouTube", next to the folder where the .bat file is located.
 Example:
-If you executable is located in "D:\Youtube-DL\YouTube-DL-Simple-TUI.bat",
+If you executable this bat file located in "D:\Youtube-DL\YouTube-DL-Simple-TUI.bat",
 the default save folder would be "D:\YouTube\\*PlaylistName*\\*VideoTitle*.
 
 Metadata is as following:  
