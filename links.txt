@@ -1,0 +1,1 @@
+ExampleFolderName;1080p;https://www.youtube.com/playlist?list=1234567890
